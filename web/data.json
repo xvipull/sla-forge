@@ -1,0 +1,216 @@
+{
+  "generated_at": "01 Sep 2025",
+  "totals": {
+    "tickets": 720,
+    "sla_attainment": 79.6,
+    "mtta": 3.1,
+    "mttr": 262.5,
+    "reopen_rate": 12.2,
+    "fcr": 50.6
+  },
+  "queues": [
+    {
+      "queue": "Infrastructure",
+      "tickets": 157,
+      "sla": 78.3,
+      "mttr": 296.2,
+      "reopen": 9.6,
+      "transfers": 0.6,
+      "risk": 56.4
+    },
+    {
+      "queue": "Business Apps",
+      "tickets": 173,
+      "sla": 75.1,
+      "mttr": 274.1,
+      "reopen": 15.0,
+      "transfers": 0.7,
+      "risk": 53.2
+    },
+    {
+      "queue": "Workplace",
+      "tickets": 114,
+      "sla": 78.9,
+      "mttr": 319.7,
+      "reopen": 8.8,
+      "transfers": 0.6,
+      "risk": 49.7
+    },
+    {
+      "queue": "Network",
+      "tickets": 143,
+      "sla": 82.5,
+      "mttr": 220.5,
+      "reopen": 13.3,
+      "transfers": 0.7,
+      "risk": 48.1
+    },
+    {
+      "queue": "Access Management",
+      "tickets": 133,
+      "sla": 84.2,
+      "mttr": 204.0,
+      "reopen": 13.5,
+      "transfers": 0.7,
+      "risk": 47.5
+    }
+  ],
+  "monthly": [
+    {
+      "month": "2025-01",
+      "sla": 79.0,
+      "tickets": 105
+    },
+    {
+      "month": "2025-02",
+      "sla": 84.9,
+      "tickets": 73
+    },
+    {
+      "month": "2025-03",
+      "sla": 83.3,
+      "tickets": 84
+    },
+    {
+      "month": "2025-04",
+      "sla": 73.6,
+      "tickets": 91
+    },
+    {
+      "month": "2025-05",
+      "sla": 75.9,
+      "tickets": 83
+    },
+    {
+      "month": "2025-06",
+      "sla": 85.5,
+      "tickets": 83
+    },
+    {
+      "month": "2025-07",
+      "sla": 84.4,
+      "tickets": 96
+    },
+    {
+      "month": "2025-08",
+      "sla": 72.4,
+      "tickets": 105
+    }
+  ],
+  "aging": [
+    {
+      "bucket": "0-24h",
+      "count": 0
+    },
+    {
+      "bucket": "24-48h",
+      "count": 0
+    },
+    {
+      "bucket": "48-72h",
+      "count": 1
+    },
+    {
+      "bucket": "72h+",
+      "count": 66
+    }
+  ],
+  "exceptions": [
+    {
+      "id": "INC-00019",
+      "queue": "Business Apps",
+      "priority": "P3",
+      "reason": "SLA breach",
+      "risk": 99,
+      "age": 5200.8
+    },
+    {
+      "id": "INC-00023",
+      "queue": "Network",
+      "priority": "P2",
+      "reason": "SLA breach",
+      "risk": 99,
+      "age": 732.7
+    },
+    {
+      "id": "INC-00038",
+      "queue": "Network",
+      "priority": "P2",
+      "reason": "SLA breach",
+      "risk": 99,
+      "age": 182.9
+    },
+    {
+      "id": "INC-00039",
+      "queue": "Access Management",
+      "priority": "P1",
+      "reason": "SLA breach",
+      "risk": 99,
+      "age": 21.3
+    },
+    {
+      "id": "INC-00044",
+      "queue": "Access Management",
+      "priority": "P2",
+      "reason": "SLA breach",
+      "risk": 99,
+      "age": 98.5
+    },
+    {
+      "id": "INC-00046",
+      "queue": "Network",
+      "priority": "P2",
+      "reason": "SLA breach",
+      "risk": 99,
+      "age": 5763.3
+    },
+    {
+      "id": "INC-00057",
+      "queue": "Workplace",
+      "priority": "P3",
+      "reason": "SLA breach",
+      "risk": 99,
+      "age": 2270.2
+    },
+    {
+      "id": "INC-00069",
+      "queue": "Business Apps",
+      "priority": "P4",
+      "reason": "SLA breach",
+      "risk": 99,
+      "age": 3916.7
+    },
+    {
+      "id": "INC-00076",
+      "queue": "Infrastructure",
+      "priority": "P3",
+      "reason": "SLA breach",
+      "risk": 99,
+      "age": 5720.1
+    },
+    {
+      "id": "INC-00092",
+      "queue": "Access Management",
+      "priority": "P4",
+      "reason": "SLA breach",
+      "risk": 99,
+      "age": 3701.5
+    },
+    {
+      "id": "INC-00095",
+      "queue": "Network",
+      "priority": "P4",
+      "reason": "SLA breach",
+      "risk": 99,
+      "age": 4206.1
+    },
+    {
+      "id": "INC-00114",
+      "queue": "Infrastructure",
+      "priority": "P2",
+      "reason": "SLA breach",
+      "risk": 99,
+      "age": 2925.4
+    }
+  ]
+}

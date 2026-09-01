@@ -1,0 +1,1 @@
+{"name":"sla-forge","version":"1.0.0","private":true,"scripts":{"build":"python3 src/generate_data.py && python3 src/pipeline.py","test":"python3 -m unittest discover -s tests"}}
