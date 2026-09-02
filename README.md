@@ -2,7 +2,9 @@
 
 **Enterprise Service Desk SLA & Root-Cause Analytics**
 
-SLAForge is a portfolio-grade service operations product for IT Service Managers, Operations Directors and Support Leads. It turns ticket events and assignment history into governed SLA metrics, queue handoff diagnostics, an explainable breach-risk queue and a responsive executive command center.
+SLAForge is a governed analytics foundation for IT Service Managers, Operations Directors, and Support Leads. It turns service-desk tickets and assignment history into trusted SLA metrics, queue handoff diagnostics, aging-backlog visibility, and explainable breach-risk triage.
+
+> **Prototype notice:** the repository contains deterministic synthetic data. It uses calendar-hour SLA clocks and is not a replacement for official contractual reporting.
 
 ## Business questions
 
@@ -14,16 +16,40 @@ SLAForge is a portfolio-grade service operations product for IT Service Managers
 ## Architecture
 
 ```text
-Synthetic tickets + SLA policy + assignment history
-                 ↓
-validation, event reconstruction and SLA-clock logic
-                 ↓
-curated ticket SLA mart + queue scorecards
-                 ↓
-SQL reporting views + explainable risk score
-                 ↓
-interactive command center / Power BI-ready data
+ITSM ticket extract       Assignment-history extract       SLA-policy reference
+        │                           │                              │
+        └───────────────► raw / staging validation ◄───────────────┘
+                                      │
+                     governed SLA-clock and handoff logic
+                                      │
+                curated ticket SLA mart + queue scorecards
+                                      │
+             SQL views ──► Power BI / Excel / operational reports
 ```
+
+## Repository map
+
+| Path | Purpose |
+| --- | --- |
+| `docs/` | Project charter, KPI governance, data contract, and assumptions. |
+| `data/raw/` | Immutable source-shaped extracts; no direct reporting. |
+| `data/staging/` | Validated, standardized, and typed intermediate data. |
+| `sql/` | Reproducible transformations and reporting views. |
+| `src/` | Pipeline and data-generation code. |
+| `notebooks/` | Exploration only; production logic belongs in `src/` or `sql/`. |
+| `powerbi/`, `excel/` | Semantic-model and workbook delivery artifacts. |
+| `reports/` | Published data-quality outputs and rendered report assets. |
+| `tests/` | Automated controls for data and transformation logic. |
+
+## Screenshot placeholders
+
+_Replace these placeholders with approved, de-identified captures as delivery assets are completed._
+
+| View | Placeholder |
+| --- | --- |
+| Executive SLA overview | `reports/screenshots/01-executive-sla-overview.png` |
+| Queue root-cause diagnostic | `reports/screenshots/02-queue-root-cause.png` |
+| Open-ticket breach-risk triage | `reports/screenshots/03-breach-risk-triage.png` |
 
 ## Quick start
 
@@ -39,7 +65,7 @@ Open `http://localhost:8080`. The deployed dashboard uses deterministic, synthet
 
 The reporting grain is one service desk ticket. Assignment history is reconstructed into transfer counts; elapsed calendar hours are used for the demo SLA clock. Core KPIs are SLA attainment, MTTA, MTTR, reopen rate, transfer count, backlog aging and first-contact resolution. Source-to-curated ticket counts reconcile to zero difference.
 
-See [requirements](docs/requirements.md), [KPI catalog](docs/kpi_catalog.md), [data dictionary](docs/data_dictionary.md), [assumptions](docs/assumptions.md) and [UAT](docs/uat.md).
+See the [project charter and requirements](docs/requirements.md), [KPI catalog](docs/kpi_catalog.md), [data dictionary](docs/data_dictionary.md), [assumptions](docs/assumptions.md), and [UAT](docs/uat.md).
 
 ## Key techniques
 
