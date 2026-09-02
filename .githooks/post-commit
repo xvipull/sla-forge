@@ -1,0 +1,4 @@
+#!/bin/sh
+# Keep the configured remote synchronized after each local commit.
+# Fail silently so a temporary network/authentication issue never blocks a commit.
+git push origin HEAD >/dev/null 2>&1 || true
