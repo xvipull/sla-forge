@@ -71,6 +71,8 @@ See the [project charter and requirements](docs/requirements.md), [KPI catalog](
 
 Run `npm run build` to generate validated staging files, the local SQLite analytics database, the dimensional model, curated marts, and a machine-readable quality report. See [pipeline controls](docs/data_pipeline.md) and the [star-model contract](docs/data_model.md).
 
+The [SQL KPI layer](docs/sql_analytics.md) contains reusable views, month-over-month windows, cohorts, root-cause segments, exception worklists, and zero-tolerance reconciliation controls. Run `npm run eda` for the documented distribution, outlier, missingness, correlation, and business-driver analysis.
+
 ## Key techniques
 
 - Reproducible synthetic ticket and assignment-event generation

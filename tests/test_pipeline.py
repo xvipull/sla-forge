@@ -32,6 +32,9 @@ class PipelineTests(unittest.TestCase):
         self.assertGreater(con.execute('select count(*) from fact_assignment').fetchone()[0],720)
         self.assertEqual(con.execute('select count(*) from dim_priority').fetchone()[0],4)
         self.assertEqual(con.execute('pragma foreign_key_check').fetchall(),[])
+        self.assertEqual(con.execute('select count(*) from v_ticket_kpi').fetchone()[0],720)
+        self.assertEqual(con.execute('select count(*) from v_queue_kpi').fetchone()[0],5)
+        self.assertGreater(con.execute('select count(*) from v_ticket_exception').fetchone()[0],0)
         con.close()
 
     def test_duplicate_and_invalid_controlled_values_fail(self):
