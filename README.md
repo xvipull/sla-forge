@@ -67,6 +67,10 @@ The reporting grain is one service desk ticket. Assignment history is reconstruc
 
 See the [project charter and requirements](docs/requirements.md), [KPI catalog](docs/kpi_catalog.md), [data dictionary](docs/data_dictionary.md), [assumptions](docs/assumptions.md), and [UAT](docs/uat.md).
 
+## Data engineering
+
+Run `npm run build` to generate validated staging files, the local SQLite analytics database, the dimensional model, curated marts, and a machine-readable quality report. See [pipeline controls](docs/data_pipeline.md) and the [star-model contract](docs/data_model.md).
+
 ## Key techniques
 
 - Reproducible synthetic ticket and assignment-event generation

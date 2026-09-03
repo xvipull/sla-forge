@@ -30,7 +30,10 @@ def main():
         assigned = created
         chain=[queue] + [random.choice([x[0] for x in QUEUES if x[0] != queue]) for _ in range(transfers)]
         for step, assigned_queue in enumerate(chain):
-            ended = (resolved or datetime(2025,9,1)) if step == len(chain)-1 else assigned + timedelta(hours=random.uniform(1, 10))
+            # A source ownership interval can never end before it begins.  This
+            # also keeps generated extracts valid under the pipeline's interval
+            # quality control when a synthetic resolution is unusually fast.
+            ended = max((resolved or datetime(2025,9,1)), assigned) if step == len(chain)-1 else assigned + timedelta(hours=random.uniform(1, 10))
             history.append({"ticket_id":f"INC-{n:05d}","sequence":step+1,"queue":assigned_queue,"assigned_at":assigned.isoformat(timespec="minutes"),"unassigned_at":ended.isoformat(timespec="minutes")})
             assigned=ended
     for name, rows in [("tickets.csv",tickets),("assignment_history.csv",history)]:

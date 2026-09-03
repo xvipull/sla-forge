@@ -1,13 +1,72 @@
 {
   "status": "PASS",
-  "ticket_row_count": 720,
-  "assignment_event_count": 1189,
-  "duplicate_ticket_ids": 0,
-  "required_columns_missing": [],
-  "referential_integrity": "PASS",
+  "run_as_of": "2025-09-01T00:00:00+00:00",
+  "source": {
+    "tickets": 720,
+    "assignment_events": 1189
+  },
+  "checks": {
+    "required_columns": "PASS",
+    "duplicates": "PASS",
+    "invalid_ranges": "PASS",
+    "referential_integrity": "PASS",
+    "freshness": {
+      "max_created_at": "2025-08-30T05:22:00+00:00",
+      "age_hours": 42.63,
+      "threshold_hours": 168,
+      "status": "PASS"
+    },
+    "null_thresholds": [
+      {
+        "field": "tickets.ticket_id",
+        "null_count": 0,
+        "null_percent": 0.0,
+        "threshold_percent": 0
+      },
+      {
+        "field": "tickets.created_at",
+        "null_count": 0,
+        "null_percent": 0.0,
+        "threshold_percent": 0
+      },
+      {
+        "field": "tickets.first_response_at",
+        "null_count": 0,
+        "null_percent": 0.0,
+        "threshold_percent": 0
+      },
+      {
+        "field": "tickets.resolved_at",
+        "null_count": 67,
+        "null_percent": 9.31,
+        "threshold_percent": 15
+      },
+      {
+        "field": "assignment_history.ticket_id",
+        "null_count": 0,
+        "null_percent": 0.0,
+        "threshold_percent": 0
+      },
+      {
+        "field": "assignment_history.assigned_at",
+        "null_count": 0,
+        "null_percent": 0.0,
+        "threshold_percent": 0
+      }
+    ]
+  },
+  "database_row_counts": {
+    "stg_tickets": 720,
+    "stg_assignment_history": 1189,
+    "fact_ticket_sla": 720,
+    "fact_assignment": 1189
+  },
   "reconciliation": {
-    "source_tickets": 720,
-    "curated_tickets": 720,
-    "difference": 0
+    "raw_to_staging_tickets": 0,
+    "staging_to_fact_tickets": 0,
+    "raw_to_staging_events": 0,
+    "staging_to_fact_events": 0,
+    "transfer_value_reconciled": true,
+    "total_transfers": 469
   }
 }
