@@ -1,1 +1,1 @@
-{"name":"sla-forge","version":"1.0.0","private":true,"scripts":{"build":"python3 src/generate_data.py && python3 src/pipeline.py","eda":"python3 src/eda.py","test":"python3 -m unittest discover -s tests"}}
+{"name":"sla-forge","version":"1.0.0","private":true,"scripts":{"build":"python3 src/generate_data.py && python3 src/pipeline.py && python3 src/advanced_analytics.py","analytics":"python3 src/advanced_analytics.py","eda":"python3 src/eda.py","test":"python3 -m unittest discover -s tests"}}

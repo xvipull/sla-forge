@@ -1,0 +1,103 @@
+{
+  "model_run_id": "brm-20250901-v1",
+  "model_name": "explainable_logistic_breach_risk_v1",
+  "split": {
+    "train": 576,
+    "test": 144,
+    "method": "chronological 80/20"
+  },
+  "threshold": 0.5,
+  "features": [
+    "priority_P1",
+    "priority_P2",
+    "priority_P3",
+    "priority_P4",
+    "category_Access",
+    "category_Collaboration",
+    "category_ERP",
+    "category_Hardware",
+    "category_Network",
+    "initial_queue_Access Management",
+    "initial_queue_Business Apps",
+    "initial_queue_Infrastructure",
+    "initial_queue_Network",
+    "initial_queue_Workplace",
+    "transfer_count"
+  ],
+  "model_test_metrics": {
+    "auc": 0.7701,
+    "precision": 1.0,
+    "recall": 0.1667,
+    "accuracy": 0.7917
+  },
+  "rule_baseline_test_metrics": {
+    "auc": 0.7176,
+    "precision": 0.5366,
+    "recall": 0.6111,
+    "accuracy": 0.7708
+  },
+  "top_drivers": [
+    {
+      "feature_name": "priority_P1",
+      "coefficient": 1.0914,
+      "odds_ratio": 2.9783,
+      "direction": "increases breach risk",
+      "driver_rank": 1
+    },
+    {
+      "feature_name": "priority_P4",
+      "coefficient": -0.8052,
+      "odds_ratio": 0.447,
+      "direction": "reduces breach risk",
+      "driver_rank": 2
+    },
+    {
+      "feature_name": "priority_P3",
+      "coefficient": -0.7986,
+      "odds_ratio": 0.45,
+      "direction": "reduces breach risk",
+      "driver_rank": 3
+    },
+    {
+      "feature_name": "priority_P2",
+      "coefficient": 0.4969,
+      "odds_ratio": 1.6437,
+      "direction": "increases breach risk",
+      "driver_rank": 4
+    },
+    {
+      "feature_name": "transfer_count",
+      "coefficient": 0.2233,
+      "odds_ratio": 1.2502,
+      "direction": "increases breach risk",
+      "driver_rank": 5
+    },
+    {
+      "feature_name": "category_Hardware",
+      "coefficient": -0.1886,
+      "odds_ratio": 0.8281,
+      "direction": "reduces breach risk",
+      "driver_rank": 6
+    },
+    {
+      "feature_name": "category_Collaboration",
+      "coefficient": 0.1378,
+      "odds_ratio": 1.1477,
+      "direction": "increases breach risk",
+      "driver_rank": 7
+    },
+    {
+      "feature_name": "initial_queue_Access Management",
+      "coefficient": -0.0933,
+      "odds_ratio": 0.9109,
+      "direction": "reduces breach risk",
+      "driver_rank": 8
+    }
+  ],
+  "limitations": [
+    "Synthetic data only; do not infer production accuracy.",
+    "The outcome is historical SLA breach, not a causal result.",
+    "Transfer count may evolve during ticket lifetime; refresh predictions as ownership changes.",
+    "Use for ticket prioritization, not employee-performance decisions."
+  ]
+}

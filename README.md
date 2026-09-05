@@ -73,6 +73,8 @@ Run `npm run build` to generate validated staging files, the local SQLite analyt
 
 The [SQL KPI layer](docs/sql_analytics.md) contains reusable views, month-over-month windows, cohorts, root-cause segments, exception worklists, and zero-tolerance reconciliation controls. Run `npm run eda` for the documented distribution, outlier, missingness, correlation, and business-driver analysis.
 
+`npm run analytics` trains and persists an explainable, time-split breach-risk model alongside an operational rule baseline. The [advanced analytics guide](docs/advanced_analytics.md) documents its governed outputs, drivers, validation approach, assumptions, and limitations.
+
 ## Key techniques
 
 - Reproducible synthetic ticket and assignment-event generation

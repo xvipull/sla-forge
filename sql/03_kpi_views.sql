@@ -1,7 +1,7 @@
 -- SQLite KPI semantic layer. Views retain ticket grain until their stated aggregation.
 DROP VIEW IF EXISTS v_ticket_kpi;
 CREATE VIEW v_ticket_kpi AS
-SELECT f.ticket_key, f.ticket_id, d.year_month AS created_month, p.priority_code AS priority,
+SELECT f.ticket_key, f.ticket_id, f.created_at, d.year_month AS created_month, p.priority_code AS priority,
        c.category_name AS category, q.queue_name AS initial_queue, f.state, f.reopened,
        f.mtta_hours, f.mttr_hours, f.age_hours, f.sla_breached, f.transfer_count,
        f.risk_score, f.risk_band

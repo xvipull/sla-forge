@@ -14,6 +14,7 @@ class PipelineTests(unittest.TestCase):
     def setUpClass(cls):
         subprocess.run([sys.executable,'src/generate_data.py'],cwd=ROOT,check=True,stdout=subprocess.DEVNULL)
         subprocess.run([sys.executable,'src/pipeline.py'],cwd=ROOT,check=True,stdout=subprocess.DEVNULL)
+        subprocess.run([sys.executable,'src/advanced_analytics.py'],cwd=ROOT,check=True,stdout=subprocess.DEVNULL)
 
     def test_generated_quality_report_reconciles_all_layers(self):
         report=json.loads((ROOT/'reports/data_quality_report.json').read_text())
@@ -35,6 +36,15 @@ class PipelineTests(unittest.TestCase):
         self.assertEqual(con.execute('select count(*) from v_ticket_kpi').fetchone()[0],720)
         self.assertEqual(con.execute('select count(*) from v_queue_kpi').fetchone()[0],5)
         self.assertGreater(con.execute('select count(*) from v_ticket_exception').fetchone()[0],0)
+        con.close()
+
+    def test_advanced_model_is_governed_and_beats_rule_baseline_auc(self):
+        report=json.loads((ROOT/'reports/model_evaluation.json').read_text())
+        con=sqlite3.connect(ROOT/'data/sla_forge.db')
+        self.assertEqual(con.execute('select count(*) from model_run').fetchone()[0],1)
+        self.assertEqual(con.execute('select count(*) from fact_breach_risk_prediction').fetchone()[0],720)
+        self.assertEqual(con.execute('select count(*) from v_breach_risk_decision_support').fetchone()[0],720)
+        self.assertGreater(report['model_test_metrics']['auc'],report['rule_baseline_test_metrics']['auc'])
         con.close()
 
     def test_duplicate_and_invalid_controlled_values_fail(self):
