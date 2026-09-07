@@ -1,0 +1,11 @@
+-- Copy into the Power BI model after loading the governed SQLite tables.
+Tickets = COUNTROWS ( fact_ticket_sla )
+SLA Attainment % = 1 - DIVIDE ( SUM ( fact_ticket_sla[sla_breached] ), [Tickets] )
+MTTA (hrs) = AVERAGE ( fact_ticket_sla[mtta_hours] )
+MTTR (hrs) = AVERAGE ( fact_ticket_sla[mttr_hours] )
+Reopen Rate % = AVERAGE ( fact_ticket_sla[reopened] )
+Avg Transfers = AVERAGE ( fact_ticket_sla[transfer_count] )
+FCR % = DIVIDE ( CALCULATE ( [Tickets], fact_ticket_sla[transfer_count] = 0, fact_ticket_sla[reopened] = 0 ), [Tickets] )
+72h+ Backlog = CALCULATE ( [Tickets], fact_ticket_sla[state] IN { "OPEN", "PENDING" }, fact_ticket_sla[age_hours] >= 72 )
+SLA Target % = 0.90
+SLA Target Gap pp = [SLA Attainment %] - [SLA Target %]
